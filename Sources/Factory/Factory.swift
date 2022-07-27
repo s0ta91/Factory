@@ -354,7 +354,7 @@ extension SharedContainer.Scope {
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 @propertyWrapper public struct InjectedObject<T>: DynamicProperty where T: ObservableObject {
     @ObservedObject private var dependency: T
-
+    
     public init(_ factory: Factory<T>) {
         self.dependency = factory()
     }
@@ -365,6 +365,7 @@ extension SharedContainer.Scope {
     public var projectedValue: ObservedObject<T>.Wrapper {
         return self.$dependency
     }
+}
 #endif
 
 /// Internal box protocol for factories
